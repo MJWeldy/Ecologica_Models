@@ -5,14 +5,14 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Model Description #  Algebra #  Simulation #  y &lt;- 1 JAGS Model Fit #  data &lt;- list( y = y ) modelstring &lt;- textConnection( &#34; model{ for (i in 1:n) { x[i]~dnorm(mu,tau) } mu~dnorm(cc,d) tau~dgamma(a,b) } &#34; ) parameters &lt;- c() inits &lt;- function() { list() } ni &lt;- 10000 nt &lt;- 1 nb &lt;- 5000 nc &lt;- 3 #JagsModel &lt;- jags(data, inits, parameters, modelstring, n.chains = nc, n.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Huggins Model" />
-<meta property="og:description" content="Model Description #  Algebra #  Simulation #  y &lt;- 1 JAGS Model Fit #  data &lt;- list( y = y ) modelstring &lt;- textConnection( &#34; model{ for (i in 1:n) { x[i]~dnorm(mu,tau) } mu~dnorm(cc,d) tau~dgamma(a,b) } &#34; ) parameters &lt;- c() inits &lt;- function() { list() } ni &lt;- 10000 nt &lt;- 1 nb &lt;- 5000 nc &lt;- 3 #JagsModel &lt;- jags(data, inits, parameters, modelstring, n.chains = nc, n." />
+<meta name="description" content="Model Description #  Algebra #  Simulation #  y &lt;- 1  JAGS data &lt;- list( y = y ) modelstring &lt;- textConnection( &#34; model{ # Likelihood for(i in 1:nSites) { # biological model z[i] ~ dbern(psi[i]) # observation model y[i] ~ dbin(p * z[i], n[i]) } # Priors psi ~ dunif(0, 1) p ~ dunif(1, 1) # Derived variable N &lt;- sum(z) } &#34; ) parameters &lt;- c() inits &lt;- function() { list() } ni &lt;- 10000 nt &lt;- 1 nb &lt;- 5000 nc &lt;- 3 #JagsModel &lt;- jags(data, inits, parameters, modelstring, n.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Single Season" />
+<meta property="og:description" content="Model Description #  Algebra #  Simulation #  y &lt;- 1  JAGS data &lt;- list( y = y ) modelstring &lt;- textConnection( &#34; model{ # Likelihood for(i in 1:nSites) { # biological model z[i] ~ dbern(psi[i]) # observation model y[i] ~ dbin(p * z[i], n[i]) } # Priors psi ~ dunif(0, 1) p ~ dunif(1, 1) # Derived variable N &lt;- sum(z) } &#34; ) parameters &lt;- c() inits &lt;- function() { list() } ni &lt;- 10000 nt &lt;- 1 nb &lt;- 5000 nc &lt;- 3 #JagsModel &lt;- jags(data, inits, parameters, modelstring, n." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/docs/2021-02-09-huggins-model/" />
-<meta property="article:published_time" content="2021-02-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-09T00:00:00+00:00" />
-<title>Huggins Model | Ecological Models</title>
+<meta property="og:url" content="http://example.org/docs/single-season/" />
+<meta property="article:published_time" content="2021-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-10T00:00:00+00:00" />
+<title>Single Season | Ecological Models</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
@@ -62,7 +62,7 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/abundance/">Abundance</a>
 <ul>
 <li>
-  <a href="/docs/2021-02-09-huggins-model/"class=active>Huggins</a></li>
+  <a href="/docs/2021-02-09-huggins-model/">Huggins</a></li>
 </ul>
 </li>
 <li>
@@ -70,7 +70,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Occupancy</strong>
 <ul>
 <li>
-  <a href="/docs/single-season/">Single Season</a></li>
+  <a href="/docs/single-season/"class=active>Single Season</a></li>
 </ul>
 </li>
 </ul>
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Huggins Model</strong>
+  <strong>Single Season</strong>
 
   <label for="toc-control">
     
@@ -135,8 +135,6 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#model-description">Model Description</a></li>
     <li><a href="#algebra">Algebra</a></li>
     <li><a href="#simulation">Simulation</a></li>
-    <li><a href="#jags-model-fit">JAGS Model Fit</a></li>
-    <li><a href="#stan-model-fit">Stan Model Fit</a></li>
     <li><a href="#comparison">Comparison</a></li>
   </ul>
 </nav>
@@ -163,47 +161,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#simulation">#</a>
 </h2>
 <div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">y</span> <span class="o">&lt;-</span> <span class="m">1</span>
-</code></pre></div><h2 id="jags-model-fit">
-  JAGS Model Fit
-  <a class="anchor" href="#jags-model-fit">#</a>
-</h2>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-<span class="p">)</span>
-<span class="n">modelstring</span> <span class="o">&lt;-</span> <span class="nf">textConnection</span><span class="p">(</span>
-  <span class="s">&#34;
-</span><span class="s">	  model{
-</span><span class="s">		for (i in 1:n) {
-</span><span class="s">		  x[i]~dnorm(mu,tau)
-</span><span class="s">		}
-</span><span class="s">		mu~dnorm(cc,d)
-</span><span class="s">		tau~dgamma(a,b)
-</span><span class="s">	  }
-</span><span class="s">	&#34;</span>
-<span class="p">)</span>
-<span class="n">parameters</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">()</span>
-
-<span class="n">inits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nf">list</span><span class="p">()</span>
-<span class="p">}</span>
-<span class="n">ni</span> <span class="o">&lt;-</span> <span class="m">10000</span>
-<span class="n">nt</span> <span class="o">&lt;-</span> <span class="m">1</span>
-<span class="n">nb</span> <span class="o">&lt;-</span> <span class="m">5000</span>
-<span class="n">nc</span> <span class="o">&lt;-</span> <span class="m">3</span>
-<span class="c1">#JagsModel &lt;- jags(data, inits, parameters, modelstring, n.chains = nc, n.thin = nt, n.iter = ni, n.burnin = nb)</span>
-</code></pre></div><h2 id="stan-model-fit">
-  Stan Model Fit
-  <a class="anchor" href="#stan-model-fit">#</a>
-</h2>
-<h2 id="comparison">
-  Comparison
-  <a class="anchor" href="#comparison">#</a>
-</h2>
-<h1 id="we-could-also-do-it-like-this">
-  We could also do it like this
-  <a class="anchor" href="#we-could-also-do-it-like-this">#</a>
-</h1>
-
+</code></pre></div>
 
 
 
@@ -215,11 +173,20 @@ https://github.com/alex-shpak/hugo-book
 <span class="n">modelstring</span> <span class="o">&lt;-</span> <span class="nf">textConnection</span><span class="p">(</span>
   <span class="s">&#34;
 </span><span class="s">	  model{
-</span><span class="s">		for (i in 1:n) {
-</span><span class="s">		  x[i]~dnorm(mu,tau)
-</span><span class="s">		}
-</span><span class="s">		mu~dnorm(cc,d)
-</span><span class="s">		tau~dgamma(a,b)
+</span><span class="s">		# Likelihood
+</span><span class="s">      for(i in 1:nSites) {
+</span><span class="s">        # biological model
+</span><span class="s">        z[i] ~ dbern(psi[i])
+</span><span class="s">        # observation model
+</span><span class="s">        y[i] ~ dbin(p * z[i], n[i])
+</span><span class="s">      }
+</span><span class="s">    
+</span><span class="s">      # Priors
+</span><span class="s">      psi ~ dunif(0, 1)
+</span><span class="s">      p ~ dunif(1, 1)
+</span><span class="s">      
+</span><span class="s">      # Derived variable
+</span><span class="s">      N &lt;- sum(z)
 </span><span class="s">	  }
 </span><span class="s">	&#34;</span>
 <span class="p">)</span>
@@ -241,6 +208,10 @@ https://github.com/alex-shpak/hugo-book
   <div class="book-tabs-content markdown-inner"><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">Greta</span> <span class="o">&lt;-</span> <span class="n">code</span> <span class="o">&lt;-</span> <span class="m">1</span>
 </code></pre></div></div></div>
 
+<h2 id="comparison">
+  Comparison
+  <a class="anchor" href="#comparison">#</a>
+</h2>
 </article>
  
       
@@ -254,7 +225,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite//docs/2021-02-09-huggins-model/index.markdown" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite//docs/single-season/index.markdown" target="_blank" rel="noopener">
       <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -287,8 +258,6 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#model-description">Model Description</a></li>
     <li><a href="#algebra">Algebra</a></li>
     <li><a href="#simulation">Simulation</a></li>
-    <li><a href="#jags-model-fit">JAGS Model Fit</a></li>
-    <li><a href="#stan-model-fit">Stan Model Fit</a></li>
     <li><a href="#comparison">Comparison</a></li>
   </ul>
 </nav>

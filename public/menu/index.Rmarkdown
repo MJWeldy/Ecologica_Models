@@ -4,3 +4,5 @@ headless: true
 - [Abundance](docs/Abundance/index.Rmarkdown)
      - [Huggins](docs/2021-02-09-huggins-model/index.Rmarkdown)
 - [Survival](docs/Survival/index.Rmarkdown)
+- **Occupancy**
+     - [Single Season](docs/single-season/index.Rmarkdown)
