@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Huggins Model</title>
+      <link>http://example.org/docs/2021-02-09-huggins-model/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/2021-02-09-huggins-model/</guid>
+      <description>Model Description #  Algebra #  Simulation #  y &amp;lt;- 1 JAGS Model Fit #  data &amp;lt;- list( y = y ) modelstring &amp;lt;- textConnection( &amp;#34; model{ for (i in 1:n) { x[i]~dnorm(mu,tau) } mu~dnorm(cc,d) tau~dgamma(a,b) } &amp;#34; ) parameters &amp;lt;- c() inits &amp;lt;- function() { list() } ni &amp;lt;- 10000 nt &amp;lt;- 1 nb &amp;lt;- 5000 nc &amp;lt;- 3 #JagsModel &amp;lt;- jags(data, inits, parameters, modelstring, n.chains = nc, n.</description>
+    </item>
+    
+    <item>
       <title>Survival</title>
       <link>http://example.org/docs/survival/</link>
       <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
