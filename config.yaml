@@ -1,0 +1,30 @@
+theme: "hugo-book"
+baseURL: http://example.org/
+languageCode: en-us
+title: Ecological Models
+menu:
+  main:
+  - identifier: about
+    name: about hugo
+    params:
+      class: highlight-menu-item
+    pre: <i class='fa fa-heart'></i>
+    url: /menu/
+    weight: -110
+  after:
+    - name: Github
+      url: https://github.com/alex-shpak/hugo-book
+      weight: 10
+params:
+  BookComments: yes
+  BookDateFormat: January 2, 2006
+  BookEditPath: edit/master/exampleSite
+  BookPortableLinks: yes
+  BookRepo: https://github.com/alex-shpak/hugo-book
+  BookSearch: yes
+  BookSection: docs
+  BookServiceWorker: yes
+  BookTheme: light
+  BookToC: yes
+  BookMenuBundle: /menu
+  
