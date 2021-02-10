@@ -1,1 +1,1 @@
-# Ecologica_Models
+# Ecological_Models
