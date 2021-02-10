@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on Ecological Models</title>
+    <link>http://example.org/docs/</link>
+    <description>Recent content in Docs on Ecological Models</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abundance</title>
+      <link>http://example.org/docs/abundance/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/abundance/</guid>
+      <description>Explanation of abundance modeling</description>
+    </item>
+    
+    <item>
+      <title>Survival</title>
+      <link>http://example.org/docs/survival/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/survival/</guid>
+      <description>Explanation of SURVIVAL modeling</description>
+    </item>
+    
+  </channel>
+</rss>
