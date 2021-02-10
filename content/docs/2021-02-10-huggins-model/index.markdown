@@ -1,7 +1,7 @@
 ---
 title: Huggins Model
 author: Matt Weldy
-date: '2021-02-09'
+date: '2021-02-10'
 slug: []
 categories: []
 tags: []
@@ -21,47 +21,6 @@ weight: 1
 y <- 1
 ```
 
-## JAGS Model Fit
-
-
-```r
-data <- list(
-  y = y
-)
-modelstring <- textConnection(
-  "
-	  model{
-		for (i in 1:n) {
-		  x[i]~dnorm(mu,tau)
-		}
-		mu~dnorm(cc,d)
-		tau~dgamma(a,b)
-	  }
-	"
-)
-parameters <- c()
-
-inits <- function() {
-  list()
-}
-ni <- 10000
-nt <- 1
-nb <- 5000
-nc <- 3
-#JagsModel <- jags(data, inits, parameters, modelstring, n.chains = nc, n.thin = nt, n.iter = ni, n.burnin = nb)
-```
-## Stan Model Fit
-
-
-
-
-## Comparison
-
-
-
-
-# We could also do it like this 
-
 {{< tabs "uniqueid" >}}
 {{< tab "JAGS" >}} 
 
@@ -72,11 +31,20 @@ data <- list(
 modelstring <- textConnection(
   "
 	  model{
-		for (i in 1:n) {
-		  x[i]~dnorm(mu,tau)
-		}
-		mu~dnorm(cc,d)
-		tau~dgamma(a,b)
+		# Likelihood
+      for(i in 1:nSites) {
+        # biological model
+        z[i] ~ dbern(psi[i])
+        # observation model
+        y[i] ~ dbin(p * z[i], n[i])
+      }
+    
+      # Priors
+      psi ~ dunif(0, 1)
+      p ~ dunif(1, 1)
+      
+      # Derived variable
+      N <- sum(z)
 	  }
 	"
 )
@@ -105,3 +73,9 @@ Greta <- code <- 1
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+## Comparison
+
+
+
+
