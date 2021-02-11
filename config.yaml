@@ -2,6 +2,10 @@ theme: "hugo-book"
 baseURL: http://example.org/
 languageCode: en-us
 title: Ecological Models
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 menu:
   main:
   - identifier: about
