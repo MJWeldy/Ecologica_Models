@@ -17,6 +17,7 @@ menu:
       weight: 10
 pygmentsUseClasses: true
 pygmentscodefences: true
+math: true
 params:
   BookComments: yes
   BookDateFormat: January 2, 2006

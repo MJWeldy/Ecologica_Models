@@ -6,8 +6,9 @@ slug: []
 categories: []
 tags: []
 weight: 1
+bibliography: ../../ecological_models.bib
+link-citations: yes
 ---
-
 
 ## Model Description
 
@@ -15,22 +16,21 @@ weight: 1
 
 ## Simulation
 
-
-```r
+``` r
 y <- 1
 ```
 
-{{< tabs "uniqueid" >}}
-{{< tab "JAGS" >}} 
+{{&lt; tabs “uniqueid” &gt;}}
+{{&lt; tab “JAGS” &gt;}}
 
-```r
+``` r
 data <- list(
   y = y
 )
 modelstring <- textConnection(
   "
-	  model{
-		# Likelihood
+      model{
+        # Likelihood
       for(i in 1:nSites) {
         # biological model
         z[i] ~ dbern(psi[i])
@@ -44,8 +44,8 @@ modelstring <- textConnection(
       
       # Derived variable
       N <- sum(z)
-	  }
-	"
+      }
+    "
 )
 parameters <- c()
 
@@ -58,23 +58,28 @@ nb <- 5000
 nc <- 3
 #JagsModel <- jags(data, inits, parameters, modelstring, n.chains = nc, n.thin = nt, n.iter = ni, n.burnin = nb)
 ```
-{{< /tab >}}
-{{< tab "Stan" >}}
 
-```r
+{{&lt; /tab &gt;}}
+{{&lt; tab “Stan” &gt;}}
+
+``` r
 Stan <- code <- 1
 ```
-{{< /tab >}}
-{{< tab "Greta" >}} 
 
-```r
+{{&lt; /tab &gt;}}
+{{&lt; tab “Greta” &gt;}}
+
+``` r
 Greta <- code <- 1
 ```
-{{< /tab >}}
-{{< /tabs >}}
+
+{{&lt; /tab &gt;}}
+{{&lt; /tabs &gt;}}
 
 ## Comparison
 
+## References
 
+<div id="refs">
 
-
+</div>

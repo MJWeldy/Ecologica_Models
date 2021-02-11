@@ -6,7 +6,10 @@ slug: []
 categories: []
 tags: []
 weight: 1
+bibliography: ../../ecological_models.bib
+link-citations: yes
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -79,3 +82,6 @@ Greta <- code <- 1
 
 ```
 
+## References
+
+<div id="refs"></div>

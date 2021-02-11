@@ -1,0 +1,101 @@
+---
+title: Conditional Likelihood
+author: Matt Weldy
+date: '2021-02-11'
+slug: []
+categories: []
+tags: []
+weight: 1
+bibliography: ../../ecological_models.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Model Description
+
+## Algebra
+
+## Simulation
+
+```{r simulation}
+N <- 150 #True population size
+n_occ <- 4 #Number of trapping occasions
+p <- 0.50 #Probability of first detection
+
+true_detections <- array(NA, dim=c(N,n_occ))
+for (t in 1:n_occ){
+  true_detections[,t] <- rbinom(n=N,size=1,prob=p)
+}
+observed <- true_detections[apply(true_detections,1,max) == 1,]
+MNKA <- nrow(observed)
+print( paste0("Number ever detected: ", MNKA,sep = " ") ) #number ever detected
+```
+{{< tabs "uniqueid" >}}
+{{< tab "JAGS" >}} 
+```{r,warning=FALSE,message=FALSE,error=FALSE, results='hide'}
+invisible(library(R2jags))
+data <- list(
+  y=observed,
+  nsites=nrow(observed),
+  MNKA=MNKA,
+  n_occ=n_occ
+)
+
+modelstring <- textConnection(
+  "
+  model {
+  
+  # Likelihood
+  for(i in 1:nsites) {
+    # observation model
+    for(j in 1:4) {
+      y[i, j] ~ dbern(p)
+    }
+  }
+  for(t in 1:4){
+    p_un[t] <- (1-p)
+  }
+  # Priors
+  p ~ dunif(0, 1) # Uninformative prior
+
+  # Derived values
+  N <- (MNKA / (1-prod(p_un[])))
+}
+"
+)
+parameters <- c("p","N")
+
+inits <- function() {
+  list( 
+    
+  )
+}
+ni <- 10000 ; nt <- 1 ; nb <- 5000 ; nc <- 3
+invisible(model <- jags(data, inits, parameters, modelstring, n.chains = nc, n.thin = nt, n.iter = ni, n.burnin = nb))
+```
+{{< /tab >}}
+{{< tab "Stan" >}}
+```{r stan}
+Stan <- code <- 1
+```
+{{< /tab >}}
+{{< tab "Greta" >}} 
+```{r Greta}
+Greta <- code <- 1
+```
+{{< /tab >}}
+{{< /tabs >}}
+
+## Comparison
+
+
+```{r Comparison}
+
+```
+
+## References
+
+<div id="refs"></div>

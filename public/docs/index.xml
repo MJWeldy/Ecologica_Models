@@ -6,32 +6,34 @@
     <description>Recent content in Docs on Ecological Models</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conditional Likelihood</title>
+      <link>http://example.org/docs/n-conditional-likelihood/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/n-conditional-likelihood/</guid>
+      <description>Model Description #  Algebra #  Simulation #  N &amp;lt;- 150 #True population size n_occ &amp;lt;- 4 #Number of trapping occasions p &amp;lt;- 0.50 #Probability of first detection true_detections &amp;lt;- array(NA, dim=c(N,n_occ)) for (t in 1:n_occ){ true_detections[,t] &amp;lt;- rbinom(n=N,size=1,prob=p) } observed &amp;lt;- true_detections[apply(true_detections,1,max) == 1,] MNKA &amp;lt;- nrow(observed) print( paste0(&amp;#34;Number ever detected: &amp;#34;, MNKA,sep = &amp;#34; &amp;#34;) ) #number ever detected ## [1] &amp;quot;Number ever detected: 142 &amp;quot; {{&amp;lt; tabs “uniqueid” &amp;gt;}} {{&amp;lt; tab “JAGS” &amp;gt;}}</description>
+    </item>
+    
+    <item>
+      <title>Abundance</title>
+      <link>http://example.org/docs/abundance/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/abundance/</guid>
+      <description>Explanation of abundance modeling
+  </description>
+    </item>
+    
     <item>
       <title>Single Season</title>
       <link>http://example.org/docs/single-season/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>http://example.org/docs/single-season/</guid>
-      <description>Model Description #  Algebra #  Simulation #  y &amp;lt;- 1  JAGS data &amp;lt;- list( y = y ) modelstring &amp;lt;- textConnection( &amp;#34; model{ # Likelihood for(i in 1:nSites) { # biological model z[i] ~ dbern(psi[i]) # observation model y[i] ~ dbin(p * z[i], n[i]) } # Priors psi ~ dunif(0, 1) p ~ dunif(1, 1) # Derived variable N &amp;lt;- sum(z) } &amp;#34; ) parameters &amp;lt;- c() inits &amp;lt;- function() { list() } ni &amp;lt;- 10000 nt &amp;lt;- 1 nb &amp;lt;- 5000 nc &amp;lt;- 3 #JagsModel &amp;lt;- jags(data, inits, parameters, modelstring, n.</description>
-    </item>
-    
-    <item>
-      <title>Abundance</title>
-      <link>http://example.org/docs/abundance/</link>
-      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/abundance/</guid>
-      <description>Explanation of abundance modeling</description>
-    </item>
-    
-    <item>
-      <title>Huggins Model</title>
-      <link>http://example.org/docs/2021-02-09-huggins-model/</link>
-      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/2021-02-09-huggins-model/</guid>
-      <description>Model Description #  Algebra #  Simulation #  y &amp;lt;- 1 JAGS Model Fit #  data &amp;lt;- list( y = y ) modelstring &amp;lt;- textConnection( &amp;#34; model{ for (i in 1:n) { x[i]~dnorm(mu,tau) } mu~dnorm(cc,d) tau~dgamma(a,b) } &amp;#34; ) parameters &amp;lt;- c() inits &amp;lt;- function() { list() } ni &amp;lt;- 10000 nt &amp;lt;- 1 nb &amp;lt;- 5000 nc &amp;lt;- 3 #JagsModel &amp;lt;- jags(data, inits, parameters, modelstring, n.chains = nc, n.</description>
+      <description>Model Description #  Algebra #  Simulation #  y &amp;lt;- 1 {{&amp;lt; tabs “uniqueid” &amp;gt;}} {{&amp;lt; tab “JAGS” &amp;gt;}}
+data &amp;lt;- list( y = y ) modelstring &amp;lt;- textConnection( &amp;#34; model{ # Likelihood for(i in 1:nSites) { # biological model z[i] ~ dbern(psi[i]) # observation model y[i] ~ dbin(p * z[i], n[i]) } # Priors psi ~ dunif(0, 1) p ~ dunif(1, 1) # Derived variable N &amp;lt;- sum(z) } &amp;#34; ) parameters &amp;lt;- c() inits &amp;lt;- function() { list() } ni &amp;lt;- 10000 nt &amp;lt;- 1 nb &amp;lt;- 5000 nc &amp;lt;- 3 #JagsModel &amp;lt;- jags(data, inits, parameters, modelstring, n.</description>
     </item>
     
     <item>
