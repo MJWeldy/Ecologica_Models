@@ -1,6 +1,7 @@
 [build]
 command = "hugo"
 publish = "public"
+latex = true
 [build.environment]
 HUGO_VERSION = "0.80.0"
 
