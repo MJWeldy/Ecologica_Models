@@ -34,7 +34,7 @@ MNKA <- nrow(observed)
 print( paste0("Number ever detected: ", MNKA,sep = " ") ) #number ever detected
 ```
 
-    ## [1] "Number ever detected: 140 "
+    ## [1] "Number ever detected: 143 "
 
 ## JAGS
 
@@ -92,8 +92,8 @@ kable(round(model$BUGSoutput$summary[c(1,3),c(1,2,3,7,8,9)],2))
 
 |     |   mean |   sd |   2.5% |  97.5% | Rhat | n.eff |
 |:----|-------:|-----:|-------:|-------:|-----:|------:|
-| N   | 147.98 | 1.47 | 145.45 | 151.21 |    1 | 15000 |
-| p   |   0.52 | 0.02 |   0.48 |   0.56 |    1 | 15000 |
+| N   | 149.68 | 1.26 | 147.48 | 152.46 |    1 | 15000 |
+| p   |   0.54 | 0.02 |   0.50 |   0.58 |    1 | 15000 |
 
 ## Stan
 
@@ -134,13 +134,13 @@ stan.samples <- stan(model_code = stan_model, data = data, iter = 10000, chains 
 
 ``` r
 library(knitr)
-kable(round(summary(stan.samples)$summary[1:2,c(1,2,3,4,8,10,9)],2))
+kable(round(summary(stan.samples)$summary[c(2,1),c(1,2,3,4,8,10,9)],2))
 ```
 
 |     |   mean | se\_mean |   sd |   2.5% |  97.5% | Rhat |  n\_eff |
 |:----|-------:|---------:|-----:|-------:|-------:|-----:|--------:|
-| p   |   0.52 |     0.00 | 0.02 |   0.48 |   0.56 |    1 | 6823.51 |
-| N   | 148.02 |     0.02 | 1.49 | 145.41 | 151.22 |    1 | 6866.30 |
+| N   | 149.69 |     0.02 | 1.28 | 147.49 | 152.46 |    1 | 6756.62 |
+| p   |   0.54 |     0.00 | 0.02 |   0.50 |   0.58 |    1 | 6723.78 |
 
 ## Comparison
 
