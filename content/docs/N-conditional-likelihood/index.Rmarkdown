@@ -20,6 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 $$\hat{N} = \frac{M_{t+1}}{1-\prod^{t}(1-p_t)}$$
 
 $$y_{i,t} \sim Bernoulli(p_t) $$
+\[\hat{N} = \frac{M_{t+1}}{1-\prod^{t}(1-p_t)}\]
+
+\[y_{i,t} \sim Bernoulli(p_t) \]
 
 ## Simulation 
 
